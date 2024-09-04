@@ -1,11 +1,12 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { Search, ShoppingBag, UserRound } from "lucide-react";
 import { Button } from "../button";
 
 export default function Header() {
+  
   return (
     <header className="sticky bg-black top-0 z-30">
       <div className="p-3 flex justify-between">
@@ -19,7 +20,7 @@ export default function Header() {
         </Link> 
 
         <nav className="flex gap-3 items-center">
-          <Link href={"#"} className="hover:opacity-75">Categories</Link>
+          <Link href={"/categories"} className="hover:opacity-75">Categories</Link>
           <Link href={"#"} className="p-2 bg-[#292E38] hover:opacity-70  rounded-xl ml-8">
             <Search />
           </Link>

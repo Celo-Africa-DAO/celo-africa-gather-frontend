@@ -2,27 +2,37 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { ProductType } from "@/pages";
 
-// Dummy data for featured collection
-const dummyFeaturedProducts = [
+// Dummy data for new arrivals
+const dummyNewArrivalProducts = [
+  {
+    id: 4,
+    name: "Jacket",
+    category: "clothing",
+    image: "/img/depth.png",
+    price: "59.99",
+    rating: 4.8,
+    stock: 20,
+    description: "Stylish leather jacket.",
+  },
   {
     id: 6,
     name: "Cat",
     category: "pets",
-    image: "/img/depth.png",
+    image: "/img/snnog.png",
     price: "199.99",
     rating: 4.9,
     stock: 7,
     description: "Cute cat with playful personality.",
   },
   {
-    id: 6,
-    name: "Cat",
-    category: "pets",
+    id: 4,
+    name: "Jacket",
+    category: "clothing",
     image: "/img/art.png",
-    price: "199.99",
-    rating: 4.9,
-    stock: 7,
-    description: "Cute cat with playful personality.",
+    price: "59.99",
+    rating: 4.8,
+    stock: 20,
+    description: "Stylish leather jacket.",
   },
   {
     id: 6,
@@ -34,35 +44,24 @@ const dummyFeaturedProducts = [
     stock: 7,
     description: "Cute cat with playful personality.",
   },
-  {
-    id: 6,
-    name: "Cat",
-    category: "pets",
-    image: "/img/art.png",
-    price: "199.99",
-    rating: 4.9,
-    stock: 7,
-    description: "Cute cat with playful personality.",
-  },
 ];
 
-const FeaturedCollection = () => {
-  const currency = "cUSD"; // Placeholder for currency
+const NewArrival = () => {
+  const currency = "USD"; // Placeholder for currency
   const [products, setProducts] = useState<ProductType[]>([]);
 
   useEffect(() => {
-    // Set products with the dummy data
-    setProducts(dummyFeaturedProducts);
+    // Set products with the dummy data (reversed for new arrivals)
+    setProducts([...dummyNewArrivalProducts].reverse());
   }, []);
 
   return (
     <>
       <div className="flex items-center justify-center">
         <div className="w-[70%]">
-          <h3 className="p-2 text-3xl">Featured Collection</h3>
-
+          <h3 className="p-2 text-3xl">New Arrival</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 w-full">
-            {products.map((item) => (
+            {products.slice(0, 4).map((item) => (
               <Link
                 href={`/item/${item.id}`}
                 key={item.id}
@@ -71,7 +70,7 @@ const FeaturedCollection = () => {
                 <img
                   src={item.image}
                   alt={item.name}
-                  className="w-full h-28 object-cover rounded-sm"
+                  className="w-full h-40 object-cover rounded-sm"
                 />
                 <h4 className="mt-5 text-xl">{item.name}</h4>
                 <p className="text-[gray] text-sm mt-3">
@@ -89,4 +88,4 @@ const FeaturedCollection = () => {
   );
 };
 
-export default FeaturedCollection;
+export default NewArrival;
